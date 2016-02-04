@@ -1,0 +1,27 @@
+{
+    "manifest_version": 2,
+    "name": "GEL documents",
+    "description": "Permet de télécharger tous les documents en lien avec un APP sur le site de GEL.",
+    "version": "2.1",
+    
+    "icons": {
+        "16": "img/icon16.jpg",
+        "48": "img/icon48.jpg",
+        "128": "img/icon128.jpg"
+    },
+    
+    "content_scripts": [{
+        "matches": ["*://www.gel.usherbrooke.ca/*"],
+        "js": [
+            "src/scripts/ext/jszip.min.js",
+            "src/scripts/utils.js",
+            "src/scripts/fetch.js",
+            "src/scripts/download.js"
+        ],
+        "all_frames": true
+    }],
+    
+    "permissions" : [
+        "tabs", "*://www.gel.usherbrooke.ca/*"
+    ]
+}
