@@ -13,10 +13,10 @@
     "content_scripts": [{
         "matches": ["*://www.gel.usherbrooke.ca/*"],
         "js": [
-            "src/scripts/ext/jszip.min.js",
-            "src/scripts/utils.js",
-            "src/scripts/fetch.js",
-            "src/scripts/download.js"
+            "src/ext/jszip.min.js",
+            "src/utils.js",
+            "src/fetch.js",
+            "src/download.js"
         ],
         "all_frames": true
     }],
