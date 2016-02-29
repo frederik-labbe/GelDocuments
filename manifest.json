@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "GEL documents",
     "description": "Permet de télécharger tous les documents en lien avec un APP sur le site de GEL.",
-    "version": "2.1",
+    "version": "2.3",
     
     "icons": {
         "16": "img/icon16.jpg",

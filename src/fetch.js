@@ -7,7 +7,9 @@ var Docs = (function() {
         
         // sections and links can only be into <ul> and <p>
         var listing = document.querySelectorAll('#divdocuments ul, #divdocuments p');
+        
         var currentSection = null;
+        var currentIndex = 0;
 
         var sectionMap = {};
 
@@ -17,9 +19,10 @@ var Docs = (function() {
                 var strongElements = item.querySelectorAll('strong, b');
                 if (strongElements.length > 0) {
                     currentSection = strongElements[0].innerText.trim();
+                    currentIndex = 0;
                 }
             } else {
-                Array.from(links).forEach(function(link, index){
+                Array.from(links).forEach(function(link){
                     if (!link.dataset.visited) {
                         link.dataset.visited = true;
                         
@@ -27,7 +30,7 @@ var Docs = (function() {
                         var lastDot = linkURL.lastIndexOf('.');
                         var hrefExt = lastDot != -1 ? linkURL.substring(lastDot) : null;
                         
-                        var currentFile = (index + 1 < 10 ? '0' : '') + (index + 1) + '_' + link.innerText.trim() + hrefExt;
+                        var currentFile = (currentIndex < 9 ? '0' : '') + (currentIndex + 1) + '_' + link.innerText.trim() + hrefExt;
                         currentFile = currentFile.replace(/\//g, '_');
                         
                         var isShortcut = lastDot < linkURL.length - 4;
@@ -49,6 +52,7 @@ var Docs = (function() {
                         
                         sectionMap[currentSection] = 1; // map the current section
                     }
+                    currentIndex++;
                 });
             }
         });
