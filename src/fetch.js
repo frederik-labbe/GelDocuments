@@ -14,7 +14,10 @@ var Docs = (function() {
         Array.from(listing).forEach(function(item){
             var links = item.getElementsByTagName('a');
             if (links.length == 0) {
-                currentSection = item.innerText.trim();
+                var strongElements = item.querySelectorAll('strong, b');
+                if (strongElements.length > 0) {
+                    currentSection = strongElements[0].innerText.trim();
+                }
             } else {
                 Array.from(links).forEach(function(link, index){
                     if (!link.dataset.visited) {
